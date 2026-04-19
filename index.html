@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saladas no Pote – 60 Receitas que Duram 7 Dias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #1B3A2D;
+      --forest-mid: #254D3C;
+      --sage: #5C8C6A;
+      --sage-light: #A8C5B0;
+      --cream: #FAF5EC;
+      --cream-warm: #F3EAD8;
+      --gold: #B8863A;
+      --gold-light: #D4A94E;
+      --white: #FFFFFF;
+      --text-dark: #1A1A1A;
+      --text-mid: #3D3D3D;
+      --text-muted: #7A7A7A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── STICKY CTA BAR ─── */
+    .sticky-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      transform: translateY(-100%);
+      transition: transform .4s ease;
+      box-shadow: 0 2px 20px rgba(0,0,0,.3);
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-bar p { color: var(--cream); font-size: .85rem; font-weight: 500; }
+    .sticky-bar p span { color: var(--gold-light); font-weight: 700; }
+    .btn-sticky {
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: .04em;
+      transition: background .2s;
+    }
+    .btn-sticky:hover { background: var(--gold-light); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--forest);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(92,140,106,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 64px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(184,134,58,.15);
+      border: 1px solid rgba(184,134,58,.4);
+      color: var(--gold-light);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+    .hero-badge::before { content: '🥗'; font-size: .9rem; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage-light);
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--sage-light);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: rgba(250,245,236,.7);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+      line-height: 1;
+    }
+    .hero-stat .label {
+      font-size: .72rem;
+      color: rgba(250,245,236,.6);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(250,245,236,.15);
+      align-self: stretch;
+    }
+    .btn-hero {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 20px 48px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 32px rgba(184,134,58,.4);
+      transition: all .3s ease;
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.1);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(184,134,58,.5); }
+    .btn-hero:hover::after { opacity: 1; }
+    .hero-guarantee {
+      margin-top: 18px;
+      font-size: .8rem;
+      color: rgba(250,245,236,.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-guarantee::before { content: '🔒'; }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+    }
+    .hero-img-stack {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+    }
+    .hero-img-main {
+      width: 100%;
+      border-radius: 24px 4px 24px 4px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.5);
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+    }
+    .hero-img-float {
+      position: absolute;
+      bottom: -24px;
+      left: -36px;
+      width: 46%;
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(0,0,0,.4);
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      border: 4px solid var(--forest);
+    }
+    .hero-pill {
+      position: absolute;
+      top: 32px;
+      right: -16px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 100px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(184,134,58,.5);
+    }
+
+    /* ─── SECTION GLOBALS ─── */
+    section { position: relative; }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 16px;
+    }
+    .section-tag::before, .section-tag::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--sage);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--forest);
+    }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-title.on-dark { color: var(--white); }
+    .section-title.on-dark em { color: var(--sage-light); }
+
+    /* ─── WHAT YOU GET ─── */
+    .what-get {
+      background: var(--cream-warm);
+      padding: 100px 80px;
+    }
+    .what-get-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .what-get-text .section-tag { color: var(--gold); }
+    .what-get-text .section-tag::before, .what-get-text .section-tag::after { background: var(--gold); }
+    .what-get-list {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .what-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(27,58,45,.06);
+      border-left: 4px solid var(--sage);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .what-item:hover { transform: translateX(6px); box-shadow: 0 6px 24px rgba(27,58,45,.12); }
+    .what-item-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .what-item-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+    .what-item-text span { font-size: .88rem; color: var(--text-muted); line-height: 1.5; }
+    .what-get-img {
+      position: relative;
+    }
+    .what-get-img img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      box-shadow: 0 24px 60px rgba(27,58,45,.2);
+    }
+    .what-get-img::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px;
+      border: 2px dashed var(--sage-light);
+      border-radius: 28px;
+      opacity: .5;
+      z-index: -1;
+    }
+
+    /* ─── SALAD SHOWCASE ─── */
+    .showcase {
+      background: var(--forest);
+      padding: 100px 0 0;
+      overflow: hidden;
+    }
+    .showcase-header {
+      text-align: center;
+      padding: 0 40px 60px;
+    }
+    .showcase-header .section-tag { justify-content: center; color: var(--sage-light); }
+    .showcase-header .section-tag::before, .showcase-header .section-tag::after { background: var(--sage-light); }
+    .showcase-header p {
+      color: rgba(250,245,236,.65);
+      max-width: 500px;
+      margin: 20px auto 0;
+      line-height: 1.7;
+    }
+
+    .cards-track {
+      display: flex;
+      gap: 24px;
+      padding: 0 80px 80px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .cards-track::-webkit-scrollbar { display: none; }
+
+    .salad-card {
+      flex-shrink: 0;
+      width: 280px;
+      scroll-snap-align: start;
+      background: var(--forest-mid);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      transition: transform .3s;
+    }
+    .salad-card:hover { transform: translateY(-8px); }
+    .salad-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .salad-card-body {
+      padding: 22px 20px;
+    }
+    .salad-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .salad-sauce {
+      font-size: .8rem;
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: .04em;
+      margin-bottom: 14px;
+    }
+    .salad-tags {
+      display: flex;
+      gap: 8px;
+    }
+    .tag {
+      font-size: .72rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+    .tag-green { background: rgba(92,140,106,.2); color: var(--sage-light); border: 1px solid rgba(92,140,106,.3); }
+    .tag-gold { background: rgba(184,134,58,.15); color: var(--gold-light); border: 1px solid rgba(184,134,58,.3); }
+
+    /* ─── VIDEO SECTION ─── */
+    .video-section {
+      background: var(--cream-warm);
+      padding: 100px 80px;
+    }
+    .video-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .video-text {}
+    .video-text p {
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-top: 24px;
+      font-size: 1.05rem;
+    }
+    .video-mockup {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(27,58,45,.2);
+    }
+    .video-mockup img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(27,58,45,.6), rgba(27,58,45,.3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.3);
+      cursor: pointer;
+      transition: transform .3s;
+    }
+    .play-btn:hover { transform: scale(1.1); }
+    .play-btn svg { width: 28px; height: 28px; fill: var(--forest); margin-left: 4px; }
+
+    /* ─── PAIN SECTION ─── */
+    .pain-section {
+      background: var(--forest);
+      padding: 100px 80px;
+    }
+    .pain-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .pain-list { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .pain-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .pain-x {
+      width: 32px; height: 32px;
+      background: rgba(220,60,60,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+    .pain-item p { color: rgba(250,245,236,.8); font-size: .95rem; line-height: 1.5; }
+
+    .solution-side {}
+    .solution-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-top: 32px;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    .solution-title span { color: var(--gold-light); font-style: italic; }
+    .solution-items { display: flex; flex-direction: column; gap: 12px; }
+    .sol-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(250,245,236,.85);
+      font-size: .95rem;
+    }
+    .sol-check {
+      width: 24px; height: 24px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem;
+      flex-shrink: 0;
+      color: white;
+      font-weight: 700;
+    }
+    .sol-check::after { content: '✓'; }
+
+    /* ─── BONUSES ─── */
+    .bonuses {
+      background: linear-gradient(160deg, var(--cream) 0%, var(--cream-warm) 100%);
+      padding: 100px 80px;
+    }
+    .bonuses-inner { max-width: 1100px; margin: 0 auto; }
+    .bonuses-header { text-align: center; margin-bottom: 60px; }
+    .bonuses-header p {
+      color: var(--text-muted);
+      margin-top: 16px;
+      font-size: 1.05rem;
+    }
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .bonus-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(27,58,45,.1);
+      border: 1px solid rgba(27,58,45,.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--gold));
+    }
+    .bonus-emoji { font-size: 3rem; margin-bottom: 20px; display: block; }
+    .bonus-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+    .bonus-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .bonus-recipes { font-size: .88rem; color: var(--text-muted); margin-bottom: 20px; }
+    .bonus-price-old {
+      font-size: .85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-bottom: 6px;
+    }
+    .bonus-price-new {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--sage);
+    }
+
+    /* ─── NUTRI ─── */
+    .nutri-section {
+      background: var(--forest);
+      padding: 100px 80px;
+    }
+    .nutri-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .nutri-img-wrap {
+      position: relative;
+    }
+    .nutri-img-wrap img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      box-shadow: 0 24px 60px rgba(0,0,0,.4);
+    }
+    .nutri-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 16px 20px;
+      border-radius: 16px;
+      text-align: center;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      box-shadow: 0 8px 28px rgba(184,134,58,.4);
+    }
+    .nutri-text {}
+    .nutri-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.0;
+      margin: 16px 0 8px;
+    }
+    .nutri-title { font-size: .88rem; color: var(--sage-light); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 24px; }
+    .nutri-text p { color: rgba(250,245,236,.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: 16px; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      background: var(--cream-warm);
+      padding: 100px 80px;
+    }
+    .test-header { text-align: center; margin-bottom: 60px; }
+    .test-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 8px;
+    }
+    .test-track::-webkit-scrollbar { display: none; }
+    .test-img {
+      flex-shrink: 0;
+      width: 340px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(27,58,45,.15);
+    }
+    .test-img img { width: 100%; display: block; object-fit: cover; }
+
+    /* ─── PRICING ─── */
+    .pricing {
+      background: var(--forest);
+      padding: 100px 80px;
+      text-align: center;
+    }
+    .pricing-inner { max-width: 700px; margin: 0 auto; }
+    .urgency-badge {
+      display: inline-block;
+      background: rgba(220,60,60,.15);
+      border: 1px solid rgba(220,100,100,.3);
+      color: #F08080;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .price-box {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      padding: 52px 48px;
+      margin-top: 40px;
+    }
+    .price-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+    .price-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .95rem;
+      color: rgba(250,245,236,.8);
+    }
+    .price-line .check { color: var(--sage-light); font-weight: 700; }
+    .price-divider { height: 1px; background: rgba(255,255,255,.1); margin: 24px 0; }
+    .price-from { font-size: .85rem; color: rgba(250,245,236,.5); text-decoration: line-through; margin-bottom: 8px; }
+    .price-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .price-main span { font-size: 1.6rem; vertical-align: top; margin-top: .6rem; display: inline-block; }
+    .price-sub { color: rgba(250,245,236,.55); font-size: .9rem; margin-top: 8px; margin-bottom: 36px; }
+    .price-sub strong { color: var(--gold-light); }
+    .btn-cta {
+      display: block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 22px 48px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 40px rgba(184,134,58,.45);
+      transition: all .3s;
+    }
+    .btn-cta:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(184,134,58,.55); }
+    .price-guarantee {
+      margin-top: 24px;
+      font-size: .82rem;
+      color: rgba(250,245,236,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq {
+      background: var(--cream);
+      padding: 100px 80px;
+    }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 56px; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(27,58,45,.12);
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 24px 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--forest);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-q:hover { color: var(--sage); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform .3s;
+      font-weight: 300;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--sage); }
+    .faq-a {
+      display: none;
+      padding-bottom: 24px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      font-size: .98rem;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: linear-gradient(135deg, var(--forest) 0%, #0F2419 100%);
+      padding: 120px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(92,140,106,.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .final-cta-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+    .final-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .final-cta h2 em { font-style: italic; color: var(--sage-light); }
+    .final-cta p {
+      color: rgba(250,245,236,.65);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0D1F14;
+      padding: 40px 80px;
+      text-align: center;
+    }
+    footer p { color: rgba(250,245,236,.3); font-size: .82rem; line-height: 1.8; }
+    footer a { color: rgba(250,245,236,.5); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate { animation: fadeUp .7s ease forwards; }
+    .delay-1 { animation-delay: .15s; }
+    .delay-2 { animation-delay: .3s; }
+    .delay-3 { animation-delay: .45s; }
+    .delay-4 { animation-delay: .6s; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { display: none; }
+      .hero-left { padding: 140px 40px 80px; }
+      .what-get-inner, .video-inner, .pain-inner, .nutri-inner { grid-template-columns: 1fr; gap: 48px; }
+      .what-get-img, .hero-right { display: none; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      .what-get, .video-section, .pain-section, .bonuses, .nutri-section, .testimonials, .pricing, .faq, .final-cta { padding-left: 32px; padding-right: 32px; }
+      .cards-track { padding: 0 32px 60px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats { gap: 20px; }
+      .hero h1 { font-size: 2.6rem; }
+      .price-main { font-size: 3rem; }
+      .price-box { padding: 36px 24px; }
+      .sticky-bar p { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY BAR -->
+  <div class="sticky-bar" id="stickyBar">
+    <p>🕐 Oferta especial: <span>R$19,90</span> – disponível por tempo limitado</p>
+    <a href="#comprar" class="btn-sticky">Quero as Receitas →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge animate">Nutri Monique Prado</div>
+      <h1 class="animate delay-1"><em>60 Saladas</em><br>no Pote que<br>Duram 7 Dias</h1>
+      <p class="hero-subtitle animate delay-2">Crocantes. Frescas. Irresistíveis.</p>
+      <p class="hero-desc animate delay-3">Prepare uma vez e tenha almoço ou jantar saudável pronto para a semana toda — sem murchar, sem desperdiçar, sem complicação.</p>
+      <div class="hero-stats animate delay-3">
+        <div class="hero-stat">
+          <span class="num">60</span>
+          <span class="label">Receitas</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="num">7</span>
+          <span class="label">Dias Frescas</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="num">30</span>
+          <span class="label">Min. de Preparo</span>
+        </div>
+      </div>
+      <a href="#comprar" class="btn-hero animate delay-4">🥗 Quero as Receitas Agora</a>
+      <p class="hero-guarantee animate delay-4">Garantia incondicional de 7 dias &nbsp;·&nbsp; Acesso imediato</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-stack">
+        <img class="hero-img-main" src="images/1.webp" alt="Salada no Pote" />
+        <img class="hero-img-float" src="images/2.webp" alt="Salada Colorida" />
+        <div class="hero-pill">7 Dias Fresquinha</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE VOCÊ VAI ENCONTRAR -->
+  <section class="what-get">
+    <div class="what-get-inner">
+      <div class="what-get-text">
+        <div class="section-tag reveal">O que você vai encontrar</div>
+        <h2 class="section-title reveal">Tudo que você<br>precisa para<br><em>comer bem todo dia</em></h2>
+        <div class="what-get-list">
+          <div class="what-item reveal">
+            <span class="what-item-icon">🥗</span>
+            <div class="what-item-text">
+              <strong>60 Saladas Deliciosas no Pote</strong>
+              <span>Receitas variadas e irresistíveis, do básico ao sofisticado.</span>
+            </div>
+          </div>
+          <div class="what-item reveal">
+            <span class="what-item-icon">🫙</span>
+            <div class="what-item-text">
+              <strong>O Segredo das Camadas</strong>
+              <span>O método que faz a salada durar 7 dias crocante na geladeira.</span>
+            </div>
+          </div>
+          <div class="what-item reveal">
+            <span class="what-item-icon">🫒</span>
+            <div class="what-item-text">
+              <strong>Molhos Irresistíveis</strong>
+              <span>Molhos caseiros específicos para cada receita — sem conservantes.</span>
+            </div>
+          </div>
+          <div class="what-item reveal">
+            <span class="what-item-icon">⏱️</span>
+            <div class="what-item-text">
+              <strong>Prontas em 30 Minutos</strong>
+              <span>Prepare no final de semana e tenha a semana inteira resolvida.</span>
+            </div>
+          </div>
+          <div class="what-item reveal">
+            <span class="what-item-icon">📖</span>
+            <div class="what-item-text">
+              <strong>Passo a Passo Completo</strong>
+              <span>Instruções claras para qualquer pote que você já tem em casa.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="what-get-img reveal">
+        <img src="images/Design-sem-nome-9-1.png" alt="Receitas de Saladas no Pote" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE DE SALADAS -->
+  <section class="showcase">
+    <div class="showcase-header">
+      <div class="section-tag">Algumas saladas que você vai preparar</div>
+      <h2 class="section-title on-dark">Vai se <em>apaixonar</em> por todas</h2>
+      <p>Deslize para ver só algumas das 60 receitas exclusivas que você vai receber.</p>
+    </div>
+    <div class="cards-track">
+      <div class="salad-card">
+        <img src="images/3.webp" alt="Salada Refrescante" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Refrescante</div>
+          <div class="salad-sauce">+ Molho Cítrico</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">100 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/4.webp" alt="Salada Caprese" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Caprese</div>
+          <div class="salad-sauce">Clássica Italiana</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">120 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/5.webp" alt="Salada Caesar" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Caesar</div>
+          <div class="salad-sauce">+ Molho Original</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">115 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/6.webp" alt="Salada Big Mac" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Big Mac</div>
+          <div class="salad-sauce">+ Molho Especial</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">180 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/7.webp" alt="Salada Mediterrânea" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Mediterrânea</div>
+          <div class="salad-sauce">+ Molho Agridoce</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">120 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/8.webp" alt="Salada Toscana" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Toscana</div>
+          <div class="salad-sauce">+ Molho Siciliano</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">130 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/9.webp" alt="Salada Rústica" />
+        <div class="salad-card-body">
+          <div class="salad-name">Salada Rústica</div>
+          <div class="salad-sauce">+ Mostarda e Mel</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">160 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="salad-card">
+        <img src="images/10.webp" alt="Mais Receitas" />
+        <div class="salad-card-body">
+          <div class="salad-name">+ 53 Receitas</div>
+          <div class="salad-sauce">Esperando por você</div>
+          <div class="salad-tags">
+            <span class="tag tag-green">7 dias</span>
+            <span class="tag tag-gold">Acesso imediato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRÉVIA EM VÍDEO -->
+  <video 
+  width="100%" 
+  height="100%" 
+  autoplay 
+  muted 
+  loop 
+  playsinline>
+  
+  <source src="images/Tutorial-das-Camadas.mp4" type="video/mp4">
+</video>
+
+  <!-- ISSO ACONTECE COM VOCÊ? -->
+  <section class="pain-section">
+    <div class="pain-inner">
+      <div>
+        <div class="section-tag" style="color:var(--sage-light)"><span style="background:var(--sage-light)"></span>Você se identifica?<span style="background:var(--sage-light)"></span></div>
+        <h2 class="section-title on-dark reveal">Isso ainda<br>acontece <em>com você?</em></h2>
+        <div class="pain-list">
+          <div class="pain-item reveal">
+            <div class="pain-x">❌</div>
+            <p>Preguiça de lavar e cortar salada todo dia</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-x">❌</div>
+            <p>Joga salada fora antes de conseguir usar</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-x">❌</div>
+            <p>Deixa de comer salada alguns dias da semana</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-x">❌</div>
+            <p>Cansou de alface e tomate de sempre</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-x">❌</div>
+            <p>Come saudável, mas falha sempre na salada</p>
+          </div>
+        </div>
+      </div>
+      <div class="solution-side">
+        <div class="section-tag" style="color:var(--gold-light)"><span style="background:var(--gold-light)"></span>A solução<span style="background:var(--gold-light)"></span></div>
+        <div class="solution-title reveal">Então você precisa de <span>Saladas no Pote + Molhos Irresistíveis</span></div>
+        <div class="solution-items">
+          <div class="sol-item reveal"><div class="sol-check"></div>Prepara tudo em 30 min no final de semana</div>
+          <div class="sol-item reveal"><div class="sol-check"></div>Tem almoço saudável pronto segunda à sexta</div>
+          <div class="sol-item reveal"><div class="sol-check"></div>Zero desperdício — tudo dura 7 dias</div>
+          <div class="sol-item reveal"><div class="sol-check"></div>60 receitas diferentes — nunca mais enjoa</div>
+          <div class="sol-item reveal"><div class="sol-check"></div>Funciona com qualquer pote que você tem</div>
+          <div class="sol-item reveal"><div class="sol-check"></div>Pode usar para vender e gerar renda extra</div>
+        </div>
+        <div style="margin-top:40px" class="reveal">
+          <a href="#comprar" class="btn-hero">Quero Começar Agora →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÔNUS -->
+
+
+  <!-- NUTRI -->
+  <section class="nutri-section">
+    <div class="nutri-inner">
+      <div class="nutri-img-wrap reveal">
+        <img src="images/12.webp" alt="Nutri Monique Prado" />
+        <div class="nutri-badge">Nutricionista<br>Registrada</div>
+      </div>
+      <div class="nutri-text">
+        <div class="section-tag" style="color:var(--sage-light)">Quem criou estas receitas</div>
+        <div class="nutri-name reveal">Nutri Monique<br>Prado</div>
+        <div class="nutri-title">Especialista em Alimentação Saudável e Prática</div>
+        <p class="reveal">Minhas receitas de Saladas no Pote e Molhos Irresistíveis sempre fizeram sucesso na internet.</p>
+        <p class="reveal">Resolvi reunir as 60 melhores receitas em um único lugar e compartilhar esse conhecimento com você também — de forma simples, acessível e que cabe na sua rotina.</p>
+        <p class="reveal">Cada receita foi testada e aprovada para garantir que a salada permaneça fresca, crocante e deliciosa por até 7 dias.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="testimonials">
+    <div class="test-header">
+      <div class="section-tag" style="justify-content:center">Resultados reais</div>
+      <h2 class="section-title reveal">Veja o que dizem<br><em>quem já tem acesso</em></h2>
+    </div>
+    <div class="test-track">
+      <div class="test-img reveal">
+        <img src="images/zeoob.com_1sc590jknq_photo.webp" alt="Depoimento 1" />
+      </div>
+      <div class="test-img reveal">
+        <img src="images/zeoob.com_1drwoio7vc_photo.webp" alt="Depoimento 2" />
+      </div>
+      <div class="test-img reveal">
+        <img src="images/zeoob.com_2rq9lp05ct_photo.webp" alt="Depoimento 3" />
+      </div>
+      <div class="test-img reveal">
+        <img src="images/1-1.webp" alt="Depoimento 4" />
+      </div>
+      <div class="test-img reveal">
+        <img src="images/2-1.webp" alt="Depoimento 5" />
+      </div>
+      <div class="test-img reveal">
+        <img src="images/3-1.webp" alt="Depoimento 6" />
+      </div>
+    </div>
+  </section>
+
+<div class="video-mockup reveal">
+  <video id="meuVideo" width="100%">
+    <source src="images/Tutorial-das-Camadas.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay" onclick="playVideo()">
+    <div class="play-btn">
+      ▶
+    </div>
+  </div>
+</div>
+
+<script>
+function playVideo() {
+  const video = document.getElementById("meuVideo");
+  video.play();
+  document.querySelector(".video-overlay").style.display = "none";
+}
+</script>
+
+  <!-- PRICING -->
+  <section class="pricing" id="comprar">
+    <div class="pricing-inner">
+      <div class="urgency-badge">⏰ Oferta por tempo limitado</div>
+      <div class="section-tag" style="justify-content:center;color:var(--sage-light)">Investimento</div>
+      <h2 class="section-title on-dark reveal">Tudo isso por<br><em>muito menos</em> do que imagina</h2>
+      <div class="price-box reveal">
+        <div class="price-includes">
+          <div class="price-line"><span class="check">✓</span> 60 Receitas de Saladas no Pote</div>
+          <div class="price-line"><span class="check">✓</span> Todos os Molhos Irresistíveis</div>
+          <div class="price-line"><span class="check">✓</span> Segredo das Camadas (método exclusivo)</div>
+          <div class="price-line"><span class="check">✓</span> 🎁 Manter Crocância</div>
+          <div class="price-line"><span class="check">✓</span> 🎁 Conservantes Naturais</div>
+          <div class="price-line"><span class="check">✓</span> 🎁 Oportunidade Única</div>
+        </div>
+        <div class="price-divider"></div>
+        <div class="price-from">De R$129,00</div>
+        <div class="price-main"><span>R$</span>19<span style="font-size:2rem">,90</span></div>
+        <p class="price-sub">à vista &nbsp;·&nbsp; ou <strong>5x de R$3,98</strong></p>
+        <a href="#" class="btn-cta">🛒 Comprar Agora — R$19,90</a>
+        <p class="price-guarantee">🔒 7 dias de garantia incondicional &nbsp;·&nbsp; Acesso imediato via WhatsApp e e-mail</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <div class="section-tag" style="justify-content:center">Dúvidas Frequentes</div>
+        <h2 class="section-title reveal">Respondemos tudo<br><em>antes da sua decisão</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Como recebo minhas receitas? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Assim que o pagamento for confirmado, você recebe acesso imediato pelo WhatsApp e por e-mail com todas as 60 receitas, os molhos e todos os bônus. Tudo disponível para baixar e começar a usar no mesmo instante. Sem espera, sem burocracia. </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O produto tem garantia? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Sim! Você tem 7 dias de garantia incondicional para testar as receitas. Se não gostar por qualquer motivo, é só pedir o reembolso e devolvemos 100% do valor investido. Simples assim.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Preciso de potes especiais? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Não precisa! Qualquer pote que você já tem em casa funciona perfeitamente. Pode ser de plástico, de vidro, grande ou pequeno. O importante é que feche bem para manter a salada fresca. Nada de gastar dinheiro extra com equipamento.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Quanto tempo dura a salada na geladeira? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Quando montada corretamente seguindo o método das camadas que eu ensino, a salada dura de 5 a 7 dias fresquinha na geladeira. Isso significa que você prepara tudo no domingo e tem almoço ou jantar saudável pronto a semana toda. Zero desperdício, zero trabalho diário.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Posso preparar todas as saladas de uma vez? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Sim, esse é exatamente o método que ensino! A maioria das pessoas prepara no sábado ou domingo as saladas da semana inteira em cerca de 30 minutos. É muito mais prático do que ter que picar, lavar e montar salada todo dia. Você ganha tempo, economiza energia e nunca fica sem opção saudável.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Posso vender saladas no pote com essas receitas? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Pode sim! Muitas alunas usam as receitas para vender e gerar renda extra. Dependendo da sua região e dos ingredientes, saladas no pote são vendidas entre R$11 e R$16 por pote (às vezes até mais). É uma forma inteligente de transformar conhecimento em lucro.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Os ingredientes são fáceis de encontrar? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Sim! Todas as receitas usam ingredientes simples e acessíveis que você encontra em qualquer supermercado, feira ou sacolão. Nada de ingredientes exóticos ou caros. Comida de verdade, com ingredientes de verdade.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="final-cta-inner">
+      <h2 class="reveal">Chega de desperdiçar<br>salada e <em>tempo</em></h2>
+      <p class="reveal">Comece hoje a ter refeições saudáveis e deliciosas prontas para a semana toda, com saladas que ficam frescas, crocantes e irresistíveis por até 7 dias.</p>
+      <a href="#comprar" class="btn-cta reveal" style="display:inline-block;width:auto">🥗 Quero as 60 Receitas — R$19,90</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Nutri Monique Prado · Todos os direitos reservados<br>
+    <a href="#">Política de Privacidade</a> &nbsp;·&nbsp; <a href="#">Termos de Uso</a></p>
+  </footer>
+
+  <script>
+    // Sticky bar
+    const bar = document.getElementById('stickyBar');
+    window.addEventListener('scroll', () => {
+      bar.classList.toggle('visible', window.scrollY > 500);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
